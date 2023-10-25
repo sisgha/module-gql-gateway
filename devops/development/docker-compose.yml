@@ -1,0 +1,20 @@
+services:
+  sisgea-module-graphqh-gateway:
+    image: node:18
+    user: node
+    command: sh -c "tail -f /dev/null"
+    container_name: sisgea-module-graphqh-gateway
+    working_dir: /code
+    networks:
+      - sisgea-net
+    ports:
+      - 127.128.88.10:3881:3881
+      - 127.128.88.10:9229:9229
+    volumes:
+      - ../../:/code
+    env_file:
+      - .env
+
+networks:
+  sisgea-net:
+    external: true
