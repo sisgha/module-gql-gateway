@@ -6,14 +6,14 @@ dev-setup:
 
 dev-up:
 	make dev-setup;
-	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-graphql-gateway up -d --remove-orphans;
+	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-gql-federation-gateway up -d --remove-orphans;
 
 dev-shell:
 	make dev-up;
-	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-graphql-gateway exec sisgea-module-graphqh-gateway bash;
+	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-gql-federation-gateway exec sisgea-module-graphqh-gateway bash;
 
 dev-down:
-	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-graphql-gateway stop
+	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-gql-federation-gateway stop
 
 dev-logs:
-	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-graphql-gateway logs -f
+	sudo docker compose --file devops/development/docker-compose.yml -p sisgea-module-gql-federation-gateway logs -f

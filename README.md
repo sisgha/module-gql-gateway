@@ -1,19 +1,19 @@
-# sisgea-module-graphql-gateway
+# sisgea-module-gql-federation-gateway
 
 Microservice de autenticação.
 
 ## Desenvolvimento
 
 ```
-git clone https://github.com/sisgha/module-graphql-gateway.git
-cd module-graphql-gateway
+git clone https://github.com/sisgha/module-gql-federation-gateway.git
+cd module-gql-federation-gateway
 ```
 
 ### Serviços do [devops/development/docker-compose.yml](./devops/development/docker-compose.yml)
 
-| Host                            | Endereço             | Descrição                                  | Plataforma Base             |
-| ------------------------------- | -------------------- | ------------------------------------------ | --------------------------- |
-| `sisgea-module-graphql-gateway` | `127.128.88.10:3881` | Aplicação NodeJS do module-graphql-gateway | `docker.io/library/node:18` |
+| Host                                   | Endereço             | Descrição                                         | Plataforma Base             |
+| -------------------------------------- | -------------------- | ------------------------------------------------- | --------------------------- |
+| `sisgea-module-gql-federation-gateway` | `127.128.88.10:3881` | Aplicação NodeJS do module-gql-federation-gateway | `docker.io/library/node:18` |
 
 ### Scripts Make
 
