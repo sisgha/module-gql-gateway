@@ -4,14 +4,14 @@ services:
     user: node
     command: sh -c "tail -f /dev/null"
     container_name: sisgea-module-graphqh-gateway
-    working_dir: /code
+    working_dir: /sisgea/env-dev/modules/back-end/module-gql-gateway
     networks:
       - sisgea-net
     ports:
       - 127.128.88.10:3881:3881
       - 127.128.88.10:9229:9229
     volumes:
-      - ../../:/code
+      - ../../:/sisgea/env-dev/modules/back-end/module-gql-gateway
     env_file:
       - .env
 
