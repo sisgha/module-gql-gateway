@@ -19,6 +19,10 @@ import { AppService } from './app.service';
               name: 'autenticacao',
               url: 'http://sisgea-module-autenticacao:3471/graphql',
             },
+            {
+              name: 'busca',
+              url: 'http://sisgea-module-busca:3469/graphql',
+            },
           ],
         }),
       },
