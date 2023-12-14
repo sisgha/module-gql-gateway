@@ -9,12 +9,12 @@ export class EnvironmentConfigService implements IConfig {
     private configService: ConfigService,
   ) {}
 
-  getFederationSubgraphModuleAutorizacaoSetup(): IConfigFederationSubgraphSetup | null {
-    const url = this.configService.get('SISGEA_SUBGRAPH_AUTORIZACAO_URL') ?? null;
+  getFederationSubgraphModuleAutenticacaoSetup(): IConfigFederationSubgraphSetup | null {
+    const url = this.configService.get('SISGEA_SUBGRAPH_AUTENTICACAO_URL') ?? null;
 
     if (url !== null) {
       return {
-        name: 'autorizacao',
+        name: 'autenticacao',
         url,
       };
     }
@@ -36,13 +36,13 @@ export class EnvironmentConfigService implements IConfig {
   }
 
   getFederationSubgraphs(): IConfigFederationSubgraphSetup[] {
-    const moduleAutorizacaoSetup = this.getFederationSubgraphModuleAutorizacaoSetup();
-    const moduleBuscaSetup = this.getFederationSubgraphModuleBuscaSetup();
+    const moduleAutenticacao = this.getFederationSubgraphModuleAutenticacaoSetup();
+    const moduleBusca = this.getFederationSubgraphModuleBuscaSetup();
 
     return [
       //
-      moduleBuscaSetup,
-      moduleAutorizacaoSetup,
+      moduleBusca,
+      moduleAutenticacao,
     ].filter((i) => i !== null);
   }
 }

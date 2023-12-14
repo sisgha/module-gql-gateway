@@ -4,7 +4,7 @@ export interface IConfigFederationSubgraphSetup {
 }
 
 export interface IConfigFederationSubgraphs {
-  getFederationSubgraphModuleAutorizacaoSetup(): null | IConfigFederationSubgraphSetup;
+  getFederationSubgraphModuleAutenticacaoSetup(): null | IConfigFederationSubgraphSetup;
 
   getFederationSubgraphModuleBuscaSetup(): null | IConfigFederationSubgraphSetup;
 
