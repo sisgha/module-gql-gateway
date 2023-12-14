@@ -1,34 +1,52 @@
 import { IntrospectAndCompose } from '@apollo/gateway';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { IConfig } from './domain';
+import { EnvironmentConfigModule } from './infrastructure/environment-config/environment-config.module';
+import { EnvironmentConfigService } from './infrastructure/environment-config/environment-config.service';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
+    ConfigModule,
+    EnvironmentConfigModule,
+
+    //
+
+    GraphQLModule.forRootAsync<ApolloGatewayDriverConfig>({
       driver: ApolloGatewayDriver,
-      server: {
-        // ... Apollo server options
-      },
-      gateway: {
-        supergraphSdl: new IntrospectAndCompose({
-          subgraphs: [
-            {
-              name: 'autenticacao',
-              url: 'http://sisgea-module-autenticacao:3471/graphql',
-            },
-            {
-              name: 'busca',
-              url: 'http://sisgea-module-busca:3469/graphql',
-            },
-          ],
-        }),
+
+      imports: [
+        //
+        EnvironmentConfigModule,
+      ],
+
+      inject: [EnvironmentConfigService],
+
+      useFactory(configService: IConfig) {
+        return {
+          server: {
+            // ... Apollo server options
+          },
+          gateway: {
+            supergraphSdl: new IntrospectAndCompose({
+              subgraphs: configService.getFederationSubgraphs(),
+            }),
+          },
+        };
       },
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    //
+    AppController,
+  ],
+  providers: [
+    //
+    AppService,
+  ],
 })
 export class AppModule {}
