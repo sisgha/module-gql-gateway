@@ -29,6 +29,8 @@ import { EnvironmentConfigService } from './infrastructure/environment-config/en
       useFactory(configService: IConfig) {
         return {
           server: {
+            introspection: true,
+            autoSchemaFile: true,
             // ... Apollo server options
           },
           gateway: {
